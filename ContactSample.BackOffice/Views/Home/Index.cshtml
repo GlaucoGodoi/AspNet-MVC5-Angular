@@ -1,0 +1,28 @@
+﻿<div ng-app="cmBackOffice">
+    <div ng-view></div>
+
+
+    <script type="text/ng-template" id="login.html">
+        @Html.Partial("_Login")
+    </script>
+
+    <script type="text/ng-template" id="loginError.html">
+        @Html.Partial("_LoginError")
+    </script>
+
+    <script type="text/ng-template" id="register.html">
+        @Html.Partial("_Register")
+    </script>
+
+    <script type="text/ng-template" id="messageList.html">
+        @Html.Partial("_MessageList")
+    </script>
+
+    <script type="text/ng-template" id="messageEdit.html">
+        @Html.Partial("_MessageEdit")
+    </script>
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/app")
+}

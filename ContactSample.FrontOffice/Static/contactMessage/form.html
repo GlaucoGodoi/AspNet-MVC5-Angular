@@ -1,0 +1,73 @@
+﻿<div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default" ng-click="vm.actions.navigateToDescription()">Description</button>
+    <button type="button" class="btn btn-default" ng-click="vm.actions.navigateToForm()">Form</button>
+</div>
+
+
+<form name="cmForm" novalidate>
+    <div class="form-group">
+        <label>Email address</label>
+        <input type="email" class="form-control" required name="email" ng-model="vm.data.email" placeholder="Email">
+        <div class="text-danger" ng-if="cmForm.email.$dirty && cmForm.email.$invalid">
+            <span ng-if="cmForm.email.$error.required">This field is required</span>
+            <span ng-if="cmForm.email.$error.email">This e-mail is not valid</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="username" required ng-maxlength="20" ng-minlength="4" ng-model="vm.data.username" placeholder="Username">
+        <div class="text-danger" ng-if="cmForm.username.$dirty && cmForm.username.$invalid">
+            <span ng-if="cmForm.username.$error.required">This field is required</span>
+            <span ng-if="cmForm.username.$error.maxlength">The maximun length for this field is 20 characters</span>
+            <span ng-if="cmForm.username.$error.minlength">The minimun length for this filed is 4 characters</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="vm.data.CreationDate">
+        <label>Creation Date</label>
+        <label class="form-control" name="creationDate">{{vm.data.creationDate}}</label>
+    </div>
+
+    <div class="form-group">
+        <label>Text</label>
+        <textarea class="form-control" rows="5" name="question" required ng-maxlength="200" ng-model="vm.data.text" placeholder="Your text"></textarea>
+        <div class="text-danger" ng-if="cmForm.question.$dirty && cmForm.question.$invalid">
+            <span ng-if="cmForm.question.$error.required">This field is required</span>
+            <span ng-if="cmForm.question.$error.maxlength">The maximum length for this field is 200 characters</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="vm.data.creationDate">
+        <label>Answer</label>
+        <textarea class="form-control" name="answer" ng-model="vm.data.answer" placeholder="Our answer"></textarea>
+        <div class="text-danger" ng-if="cmForm.text.$dirty && cmForm.text.$invalid">
+            <span ng-if="cmForm.answer.$error.required">This field is required</span>
+            <span ng-if="cmForm.answer.$error.maxlength">The maximum length for this field is 200 characters</span>
+        </div>
+
+    </div>
+
+    <div class="form-group" ng-class="{'has-error':cmForm.messageType.$invalid}">
+        <label>Message type</label>
+        <select class="form-control" name="messageType" required ng-model="vm.data.messageType" ng-options="item for item in vm.ui.messageTypes"></select>
+        <div class="text-danger" ng-if="cmForm.messageType.$dirty && cmForm.messageType.$invalid">
+            <span ng-if="cmForm.messageType.$error.required">This field is required</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error':cmForm.businessArea.$invalid}">
+        <label>Business area</label>
+        <select class="form-control" name="businessArea" required ng-model="vm.data.businessArea" ng-options="item for item in vm.ui.businessAreas"></select>
+        <div class="text-danger" ng-if="cmForm.businessArea.$dirty && cmForm.businessArea.$invalid">
+            <span ng-if="cmForm.businessArea.$error.required">This field is required</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="vm.data.answerDate">
+        <label>Answer date</label>
+        <label class="form-control" name="answerDate">{{vm.data.answerDate}}</label>
+    </div>
+
+    <button type="button" ng-click="vm.actions.saveData()" ng-disabled="cmForm.$invalid" ng-class="{'btn-danger':cmForm.$invalid, 'btn-success':!cmForm.$invalid}" class="btn btn-default"><i ng-class="{'glyphicon glyphicon-floppy-save':vm.ui.saving}"></i> Submit</button>
+</form>

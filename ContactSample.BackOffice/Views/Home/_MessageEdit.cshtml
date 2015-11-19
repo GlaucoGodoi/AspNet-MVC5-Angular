@@ -1,0 +1,46 @@
+﻿<div class="well well-sm clearfix">
+    <h4 class="col-xs-6 pull-left">Respond a message</h4>
+    <h4 class="col-xs-5 pull-right">User: {{vm.ui.username}}</h4>
+    <div class="clearfix"></div>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading clearfix">
+            <div>
+                <div class="form-group col-xs-5 pull-left">
+                    <label for="">User</label>
+                    <label class="form-control">{{vm.data.username}}</label>
+                </div>
+
+                <div class="form-group col-xs-5 pull-right">
+                    <label for="">Creation date</label>
+                    <label class="form-control">{{vm.data.creationDate}}</label>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="form-group col-xs-12">
+                    <label for="">e-Mail</label>
+                    <label class="form-control">{{vm.data.eMail}}</label>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label for="">Text</label>
+                    <label class="form-control">{{vm.data.text}}</label>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="panel-body" name="answerForm" ng-form>
+            <div class="form-group">
+                <label for="">Response</label>
+                <textarea required ng-maxlength="1000" name="response" class="form-control col-xs-12" ng-model="vm.data.answer" rows="6"></textarea>
+                <div class="text-danger" ng-if="answerForm.response.$dirty && answerForm.$invalid">
+                    <span ng-if="answerForm.response.$error.required" >This field is required.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-info puleft col-xs-3" href="#messageList">Back to list</a>
+    <button class="btn btn-success pull-right col-xs-3" ng-click="vm.actions.saveData()" ng-class="{'btn-danger':answerForm.$invalid}" ng-disabled="answerForm.$invalid">Save</button>
+</div>

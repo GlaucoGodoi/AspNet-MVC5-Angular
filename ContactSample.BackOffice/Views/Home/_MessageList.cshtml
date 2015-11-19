@@ -1,0 +1,30 @@
+﻿<div class="well well-lg clearfix">
+    <h2 class="col-xs-4">Message list</h2>
+    <h3 class="col-xs-5 pull-right">User: {{vm.ui.username}}</h3>
+    <div class="clearfix"></div>
+    <hr />
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-heading">
+            <div class="pull-left col-xs-5">Creation date</div>
+            <div class="pull-right col-xs-5">Username</div>
+            <div class="pull-left col-xs-5">Business Area</div>
+            <div class="pull-right col-xs-5">Message type</div>
+            <div class="clearfix"></div>
+        </li>
+        <li ng-repeat="message in vm.ui.messages track by message.id"
+            class="list-group-item list-group-item-warning selectableItem "
+            ng-click="vm.actions.displayMessage(message.id)">
+            <div class="pull-left col-xs-5">{{message.creationDate}}</div>
+            <div class="pull-right col-xs-5">{{message.username}}</div>
+            <div class="pull-left col-xs-5">{{message.businessArea}}</div>
+            <div class="pull-right col-xs-5">{{message.messageType}}</div>
+            <div class="clearfix"></div>
+        </li>
+    </ul>
+    <nav>
+        <ul class="pager">
+            <li ng-show="vm.ui.previousLink!=''"><a href="{{vm.ui.previousLink}}" >Previous</a></li>
+            <li ng-show="vm.ui.nextLink!=''"><a href="{{vm.ui.nextLink}}" >Next</a></li>
+        </ul>
+    </nav>
+</div>
